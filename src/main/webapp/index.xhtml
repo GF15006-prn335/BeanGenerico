@@ -69,10 +69,10 @@
                 <p:outputLabel><strong>Descripcion</strong></p:outputLabel><p:inputTextarea  title="descripcion" id="Descripcion" value="#{categoriaBean.catEntity.descripcion}"/>
             </p:panelGrid>
             
-            <p:panel visible="#{categoriaBean.visible}" style="border: none">
+            <p:panel visible="#{categoriaBean.visible}" style="border: none" >
              <p:commandButton  value="Agregar" actionListener="#{categoriaBean.crear()}" update="@all"/>
            
-             <p:commandButton  value="limpiar" type="reset" update="@all"/>
+             <p:commandButton  value="limpiar" type="reset" update=":myForm"/>
              
             </p:panel>
             <p:panel visible="#{!categoriaBean.visible}" style="border: none">

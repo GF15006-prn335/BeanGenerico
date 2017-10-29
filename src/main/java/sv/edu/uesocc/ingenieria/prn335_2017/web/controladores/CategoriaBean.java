@@ -64,19 +64,21 @@ public class CategoriaBean extends BeanGenerico<Categoria> implements Serializab
     
     @Override
     protected AbstractGen<Categoria> getFacadeLocal() {
-        return null; //categoria
+        return categoria;
       
     }
     
     @Override
     public void modificar() {
-        super.modificar(); 
+        super.modificar();
+        catEntity= new Categoria();
        
     }
 
     @Override
     public void eliminar() {
         super.eliminar(); 
+        catEntity= new Categoria();
        
     }
 
@@ -90,18 +92,27 @@ public class CategoriaBean extends BeanGenerico<Categoria> implements Serializab
  * @param event 
  */
      public void onRowSelect(SelectEvent event) {
-       cat = (Categoria) event.getObject();
+       catEntity = (Categoria) event.getObject();
         visible=false;
      }
   
      public void cancelar(){
-         cat= new Categoria();
+         catEntity= new Categoria();
          visible=true;
      }
      
      public void nuevo(){
          visible=false;
      }
+     
+
+    public Categoria getCat() {
+        return cat;
+    }
+
+    public void setCat(Categoria cat) {
+        this.cat = cat;
+    }
      
      
     public List<Categoria> getFiltroCat() {
@@ -159,7 +170,7 @@ public class CategoriaBean extends BeanGenerico<Categoria> implements Serializab
    
     @PostConstruct
     public void init(){
-     //llenar
+     llenar();
     }
     
    
@@ -183,13 +194,7 @@ public boolean isActivo() {
         this.catEntity = catEntity;
     }
 
-    public Categoria getCat() {
-        return cat;
-    }
-
-    public void setCat(Categoria cat) {
-        this.cat = cat;
-    }
+   
 
     public List<Categoria> getLista() {
         return lista;
